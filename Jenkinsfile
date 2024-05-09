@@ -4,14 +4,11 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
-        sh "node --version"
       }
     }
     stage('Test') {
       steps {
         echo 'Testing..'
-        sh 'ls -ltrA'
-        sh 'find . -type d -name dist -exec ls -ltr {} \\;'
       }
     }
     stage('Deploy') {
