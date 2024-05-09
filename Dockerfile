@@ -9,5 +9,7 @@ RUN npm i
 
 COPY . .
 RUN npm cache clean --force
+RUN chown -R node:node /app
+USER node
 
 CMD ["npm", "start"]
