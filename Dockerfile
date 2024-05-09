@@ -8,9 +8,6 @@ RUN npm i -g typescript
 RUN npm i
 
 COPY . .
-RUN rm -rf /root/.npm
-RUN mkdir /root/.npm
-RUN chown -R jenkins:jenkins /root/.npm
-USER jenkins
+RUN npm cache clean --force
 
 CMD ["npm", "start"]
