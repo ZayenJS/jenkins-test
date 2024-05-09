@@ -18,6 +18,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
+        sh 'docker stop test-app'
         sh 'docker run --rm -d -p 10000:10000 test-app --name test-app'
       }
     }
