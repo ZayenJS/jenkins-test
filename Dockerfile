@@ -8,5 +8,7 @@ RUN npm i -g typescript
 RUN npm i
 
 COPY . .
+RUN chown -R node:node /app
+USER node
 
 CMD ["npm", "start"]
