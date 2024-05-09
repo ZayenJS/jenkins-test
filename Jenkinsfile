@@ -5,7 +5,6 @@ pipeline {
       steps {
         echo 'Building..'
         sh "node --version"
-        sh 'docker build -t test-app .'
       }
     }
     stage('Test') {
@@ -18,8 +17,8 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'docker stop test-app'
-        sh 'docker run --rm -d -p 10000:10000 test-app --name test-app'
+        sh 'docker compose down'
+        sh 'docker compose up -d'
       }
     }
   }
