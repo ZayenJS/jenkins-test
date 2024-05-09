@@ -1,15 +1,16 @@
 FROM node:latest
 
-WORKDIR /app
+WORKDIR /usr/app
 
-COPY package.json .
+COPY package*.json ./
 
+RUN npm cache clean --force
 RUN npm i -g typescript
 RUN npm i
 
 COPY . .
-RUN npm cache clean --force
-RUN chown -R node:node /app
-USER node
+RUN tsc -p tsconfig.json
+
+RUN chown -R node:node .
 
 CMD ["npm", "start"]
