@@ -4,8 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
-        sh 'npm i -g typescript'
-        sh 'tsc -v'
+        sh "docker-compose exec node bash -ci 'npm i && tsc'"
       }
     }
     stage('Test') {
@@ -17,7 +16,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'node dist/index.js'
+        sh 'docker-compose up'
       }
     }
   }
