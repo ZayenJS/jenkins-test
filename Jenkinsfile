@@ -6,7 +6,6 @@ pipeline {
         echo 'Building..'
         sh "node --version"
         sh 'tsc --version'
-        sh 'tsc'
       }
     }
     stage('Test') {
@@ -19,7 +18,6 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'node dist/index.js'
       }
     }
   }

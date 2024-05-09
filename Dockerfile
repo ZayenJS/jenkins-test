@@ -8,5 +8,5 @@ RUN npm i -g typescript
 RUN npm i
 
 COPY . .
-
+EXPOSE 10000
 CMD [ "npm", "start" ]
