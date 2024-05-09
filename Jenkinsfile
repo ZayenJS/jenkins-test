@@ -1,10 +1,12 @@
 pipeline {
-  agent any
+  agent {
+    docker { image 'node:16-alpine' }
+  }
   stages {
     stage('Build') {
       steps {
         echo 'Building..'
-        sh "docker-compose exec node bash -ci 'npm i && tsc'"
+        sh "node --version"
       }
     }
     stage('Test') {
@@ -16,7 +18,6 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'docker-compose up'
       }
     }
   }
