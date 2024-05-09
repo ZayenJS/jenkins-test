@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
-        sh 'node -v'
+        sh 'node index.js'
       }
     }
     stage('Test') {
